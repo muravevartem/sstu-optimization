@@ -26,6 +26,7 @@ class AntOptimizer(
         }
 
         val tmpNum = random()
+        // Вероятность с которой муравей перейдет в i точку
         var prob = 0
         for (i in selection.indices) {
             prob += selection[i] / sumNum
@@ -49,7 +50,7 @@ class AntOptimizer(
             val selection = mutableListOf<Int>()
             for (j in unvisitedIndex) {
                 selection.add(
-                    ((pm[i][j].pow(this.a)) * ((1 / dm[i][j].coerceAtLeast(10.0.pow(-5.0)).pow(this.b)))).toInt()
+                    ((pm[i][j].pow(this.a)) * (((1 / dm[i][j]).pow(this.b)))).toInt()
                 )
             }
             val selectedIndex = selectIndex(selection)
